@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "webrtc-cctv-frontend.fullname" . }}
+  labels:
+    {{- include "webrtc-cctv-frontend.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "webrtc-cctv-frontend.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "webrtc-cctv-frontend.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: install
+          image: alpine
+          command:
+          - wget
+          - "-O"
+          - "/html/index.html"
+          - {{ .Values.config.html.url }}
+          volumeMounts:
+          - name: html
+            mountPath: "/html"      
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+          - name: certs
+            mountPath: "/certs"
+            readOnly: true
+          - name: html
+            mountPath: /usr/share/nginx/html
+          - name: config
+            mountPath: /etc/nginx/conf.d/
+            readOnly: true            
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          ports:
+            - name: https
+              containerPort: 443
+              protocol: TCP              
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: https
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: https
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: certs
+          secret:
+            secretName: {{ .Values.image.tls.secret }}
+            items:
+            - key: tls.crt
+              path: tls.crt            
+            - key: tls.key
+              path: tls.key
+            - key: ca.crt
+              path: ca.crt
+        - name: html
+          emptyDir: {}              
+        - name: config
+          configMap:
+            name: {{ include "webrtc-cctv-frontend.fullname" . }}-configmap
+            # An array of keys from the ConfigMap to create as files
+            items:
+            - key: "default.conf"
+              path: "default.conf"
