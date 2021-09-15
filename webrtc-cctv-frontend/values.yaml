@@ -4,7 +4,7 @@
 
 config:
   html:
-    url: http://kubernetes.io/index.html
+    url: https://raw.githubusercontent.com/sordfish/webrtc-cctv-frontend/main/index.html
 
 replicaCount: 1
 
