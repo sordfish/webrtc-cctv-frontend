@@ -12,7 +12,7 @@
 
   <style>
     #remotes video {
-      width: 320px;
+      width: 40%;
     }
 
     .row {
@@ -24,34 +24,33 @@
 </head>
 
 <body>
-  <div class="container pt-4">
+  <div class="container">
+    <div class="row">
+      <div id="remotes" class="col">
+        <span class="badge badge-primary">Remotes</span>
+      </div>
+    </div>
     <div class="row" id="start-btns">
-      <div class="col-12">
+      <div class="col">
         <button type="button" class="btn btn-primary" onclick="start(false)">
           Publish
         </button>
       </div>
-    </div>
-    <div class="row">
-      <div id="remotes" class="col-6 pt-2">
-        <span class="badge badge-primary">Remotes</span>
-
-        <div class="row" id="enable-audio">
-          <div class="col-12">
-            <button type="button" class="btn btn-primary" id="enable-audio-button" onclick="enableAudio(false)">
-              Enable Audio
-            </button>
-          </div>
+      <div class="col">
+        <div id="enable-audio">
+          <button type="button" class="btn btn-primary" id="enable-audio-button" onclick="enableAudio(false)">
+            Enable Audio
+          </button>
         </div>
-      </div>
-    </div>
+      </div>      
+    </div>     
     <div class="row">
-      <div class="col-6 pt-2">
+      <div class="col">
         <span style="position: absolute; margin-left: 5px; margin-top: 5px" class="badge badge-primary">Local</span>
-        <video id="local-video" style="background-color: black" width="320" height="240"></video>
+        <video id="local-video" style="background-color: black" width="100%"></video>
         <div class="controls" style="display: none">
-          <div class="row pt-3">
-            <div class="col-3">
+          <div class="row">
+            <div class="col">
               <strong>Video</strong>
               <div class="radio">
                 <label><input type="radio" onclick="controlLocalVideo(this)" value="true" name="optlocalvideo"
@@ -63,7 +62,7 @@
                   Mute</label>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col">
               <strong>Audio</strong>
               <div class="radio">
                 <label><input type="radio" onclick="controlLocalAudio(this)" value="true" name="optlocalaudio"
