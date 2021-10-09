@@ -34,7 +34,7 @@ spec:
           - "-O"
           - "/html/index.html"
           - {{ .Values.config.html.url }}
-          - && 
+          - "&&"
           - wget
           - "-O"
           - "/html/main.js"
