@@ -5,6 +5,8 @@
 config:
   html:
     url: https://raw.githubusercontent.com/sordfish/webrtc-cctv-frontend/main/index.html
+  js:
+    url: https://raw.githubusercontent.com/sordfish/webrtc-cctv-frontend/main/index.html
 
 replicaCount: 1
 
