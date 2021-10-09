@@ -7,6 +7,9 @@ config:
     url: https://raw.githubusercontent.com/sordfish/webrtc-cctv-frontend/main/index.html
   websocket:
     url: "ion-sfu"  
+  js:
+    url: https://raw.githubusercontent.com/sordfish/webrtc-cctv-frontend/main/main.js
+
 
 replicaCount: 1
 

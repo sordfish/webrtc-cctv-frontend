@@ -1,6 +1,6 @@
 ## webrtc-cctv-frontend
 
-Based off the ion-sfu example https://github.com/pion/ion-sfu/blob/master/examples/gallerytest/index.html
+Based off the ion-sfu example https://github.com/pion/ion-sfu/tree/master/examples/pubsubtest
 
 Includes helm chart for nginx
 
