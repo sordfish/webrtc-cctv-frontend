@@ -31,13 +31,9 @@ spec:
           image: alpine
           command:
           - wget
-          - "-O"
-          - "/html/index.html"
+          - "-P"
+          - "/html"
           - {{ .Values.config.html.url }}
-          - "&&"
-          - wget
-          - "-O"
-          - "/html/main.js"
           - {{ .Values.config.js.url }}
           volumeMounts:
           - name: html
