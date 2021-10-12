@@ -11,6 +11,8 @@ data:
         ssl_certificate     /certs/tls.crt;
         ssl_certificate_key /certs/tls.key;
 
+        proxy_read_timeout 7d;
+
         #access_log  /var/log/nginx/host.access.log  main;
 
         location / {
