@@ -17,7 +17,7 @@ image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "1.21.3-alpine"
   tls:
     secret: "web-tls-secret"
 
