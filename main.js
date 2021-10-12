@@ -42,6 +42,7 @@ function enableAudio() {
     for (const streamInfo of Object.values(streams)) {
       let { videoElement } = streamInfo;
       videoElement.pause();
+      videoElement.controls;
       videoElement.muted = false;
       videoElement.play();
     }
