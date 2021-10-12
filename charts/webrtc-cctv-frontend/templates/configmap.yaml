@@ -32,7 +32,7 @@ data:
           proxy_set_header Upgrade $http_upgrade;
           proxy_set_header Connection "Upgrade";
           proxy_set_header Host $host;
-          proxy_pass https://{{ .Values.config.websocket.url }}.{{ .Release.Namespace }}.svc.cluster.local:7000;
+          proxy_pass http://{{ .Values.config.websocket.url }}.{{ .Release.Namespace }}.svc.cluster.local:7000;
         }        
 
     }

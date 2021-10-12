@@ -19,7 +19,7 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
   tls:
-    secret: ""
+    secret: "web-tls-secret"
 
 imagePullSecrets: []
 nameOverride: ""
