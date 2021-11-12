@@ -42,7 +42,6 @@ function enableAudio() {
     for (const streamInfo of Object.values(streams)) {
       let { videoElement } = streamInfo;
       videoElement.pause();
-      videoElement.controls;
       videoElement.muted = false;
       videoElement.play();
     }
@@ -55,25 +54,6 @@ function enableAudio() {
   }
 }
 
-let localStream;
-const start = () => {
-  IonSDK.LocalStream.getUserMedia({
-    resolution: "vga",
-    audio: true,
-    codec: params.has("codec") ? params.get("codec") : "vp8",
-  })
-    .then((media) => {
-      localStream = media;
-      localVideo.srcObject = media;
-      localVideo.autoplay = true;
-      localVideo.controls = true;
-      localVideo.muted = true;
-      joinBtns.style.display = "none";
-      clientLocal.publish(media);
-    })
-    .catch(console.error);
-};
-
 clientLocal.ontrack = (track, stream) => {
   console.log("got track", track.id, "for stream", stream.id);
   track.onunmute = () => {
@@ -83,6 +63,7 @@ clientLocal.ontrack = (track, stream) => {
       const remoteVideo = document.createElement("video");
       remoteVideo.srcObject = stream;
       remoteVideo.autoplay = true;
+      remoteVideo.controls = true;
       remoteVideo.muted = remoteVideoIsMuted;
       remotesDiv.appendChild(remoteVideo);
 
@@ -104,18 +85,4 @@ clientLocal.ontrack = (track, stream) => {
   };
 };
 
-const controlLocalVideo = (radio) => {
-  if (radio.value === "false") {
-    localStream.mute("video");
-  } else {
-    localStream.unmute("video");
-  }
-};
 
-const controlLocalAudio = (radio) => {
-  if (radio.value === "false") {
-    localStream.mute("audio");
-  } else {
-    localStream.unmute("audio");
-  }
-};
