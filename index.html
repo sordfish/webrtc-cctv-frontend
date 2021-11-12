@@ -14,8 +14,15 @@
     
     @media (max-width : 1000px) {
       #remotes video {
-        width: 40%;
+        width: 100%;
+        border-radius: 25px;
+        border: 1px solid #FFFFFF00;
+        padding: 0.1rem;
       }
+  
+      div#remotes {
+      }
+
     }
 
     .row {
@@ -30,56 +37,7 @@
   <div class="container-xl" style="padding: 0;">
     <div class="row">
       <div id="remotes" class="col">
-        <span class="badge badge-primary">Remotes</span>
-      </div>
     </div>
-    <div class="row" id="start-btns">
-      <div class="col">
-        <button type="button" class="btn btn-primary" onclick="start(false)">
-          Publish
-        </button>
-      </div>
-      <div class="col">
-        <div id="enable-audio">
-          <button type="button" class="btn btn-primary" id="enable-audio-button" onclick="enableAudio(false)">
-            Enable Audio
-          </button>
-        </div>
-      </div>      
-    </div>     
-    <div class="row">
-      <div class="col">
-        <span style="position: absolute; margin-left: 5px; margin-top: 5px" class="badge badge-primary">Local</span>
-        <video id="local-video" style="background-color: black" width="100%"></video>
-        <div class="controls" style="display: none">
-          <div class="row">
-            <div class="col">
-              <strong>Video</strong>
-              <div class="radio">
-                <label><input type="radio" onclick="controlLocalVideo(this)" value="true" name="optlocalvideo"
-                    checked />
-                  Unmute</label>
-              </div>
-              <div class="radio">
-                <label><input type="radio" onclick="controlLocalVideo(this)" value="false" name="optlocalvideo" />
-                  Mute</label>
-              </div>
-            </div>
-            <div class="col">
-              <strong>Audio</strong>
-              <div class="radio">
-                <label><input type="radio" onclick="controlLocalAudio(this)" value="true" name="optlocalaudio"
-                    checked />
-                  Unmute</label>
-              </div>
-              <div class="radio">
-                <label><input type="radio" onclick="controlLocalAudio(this)" value="false" name="optlocalaudio" />
-                  Mute</label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <!-- Optional JavaScript -->
@@ -99,3 +57,4 @@
 </body>
 
 </html>
+
