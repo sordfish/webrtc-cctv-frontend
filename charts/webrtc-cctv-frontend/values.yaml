@@ -3,6 +3,8 @@
 # Declare variables to be passed into your templates.
 
 config:
+  selfsignedcert:
+    enabled: false
   html:
     url: https://raw.githubusercontent.com/sordfish/webrtc-cctv-frontend/main/index.html
   websocket:
@@ -17,9 +19,10 @@ image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.21.3-alpine"
+  tag: "1.21.4-alpine"
   tls:
     secret: "web-tls-secret"
+    
 
 imagePullSecrets: []
 nameOverride: ""

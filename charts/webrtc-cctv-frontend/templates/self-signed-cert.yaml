@@ -1,3 +1,4 @@
+{{- if .Values.config.selfsignedcert.enabled -}}
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
@@ -14,3 +15,4 @@ spec:
   dnsNames:
   - "web.{{ .Release.Namespace }}.svc.cluster.local"
   - "*.{{ .Release.Namespace }}.svc.cluster.local"
+{{- end }}  
