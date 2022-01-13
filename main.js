@@ -115,12 +115,12 @@ clientLocal.ontrack = (track, stream) => {
 
       switch (track.id) {
         case "video":
-          createVideo(stream)
+          createVideo(stream);
           break;
-        case "audio"
-          createAudio(stream)  
+        case "audio":
+          createAudio(stream);
         default:
-          createVideo(stream)
+          createVideo(stream);
           break
       };
     };
