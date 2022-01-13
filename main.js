@@ -92,16 +92,18 @@ function createAudio(stream) {
 }
 
 clientLocal.ontrack = (track, stream) => {
-  console.log("got track", track.id, "for stream", stream.id);
+  //console.log("got track", track.id, "for stream", stream.id);
   track.onunmute = () => {
     // If the stream is not there in the streams map.
     if (!streams[stream.id]) {
 
       switch (track.id) {
         case "video":
+          console.log("got track", track.id, "for stream", stream.id);
           createVideo(stream);
           break;
         case "audio":
+          console.log("got track", track.id, "for stream", stream.id);
           createAudio(stream);
         default:
           console.log(`Track ID ${track.id} from ${stream.id} not recognised, not adding to remotes`)
