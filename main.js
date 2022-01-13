@@ -104,8 +104,7 @@ clientLocal.ontrack = (track, stream) => {
         case "audio":
           createAudio(stream);
         default:
-          createVideo(stream);
-          break;
+          console.log("Track ID not recognised, not adding to remotes")
       };
     };
   };
