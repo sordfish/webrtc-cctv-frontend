@@ -40,6 +40,7 @@ let remoteVideoIsMuted = true;
 function createVideo(stream) {
     // Create a video element for rendering the stream
     const remoteVideo = document.createElement("video");
+    remoteVideo.dataset.streamid = stream.id;
     remoteVideo.srcObject = stream;
     remoteVideo.autoplay = true;
     remoteVideo.controls = true;
@@ -65,6 +66,7 @@ function createVideo(stream) {
 function createAudio(stream) {
     // Create a video element for rendering the stream
     const remoteAudio = document.createElement("audio");
+    remoteAudio.dataset.streamid = stream.id;
     remoteAudio.srcObject = stream;
     remoteAudio.autoplay = true;
     remoteAudio.controls = true;
