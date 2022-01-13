@@ -91,24 +91,6 @@ function createAudio(stream) {
     };
 }
 
-function enableAudio() {
-  if (remoteVideoIsMuted) {
-    // Unmute all the current videoElements.
-    for (const streamInfo of Object.values(streams)) {
-      let { videoElement } = streamInfo;
-      videoElement.pause();
-      videoElement.muted = false;
-      videoElement.play();
-    }
-    // Set remoteVideoIsMuted to false so that all future autoplays
-    // work.
-    remoteVideoIsMuted = false;
-
-    const button = document.getElementById("enable-audio-button");
-    button.remove();
-  }
-}
-
 clientLocal.ontrack = (track, stream) => {
   console.log("got track", track.id, "for stream", stream.id);
   track.onunmute = () => {
@@ -123,7 +105,7 @@ clientLocal.ontrack = (track, stream) => {
           createAudio(stream);
         default:
           createVideo(stream);
-          break
+          break;
       };
     };
   };
