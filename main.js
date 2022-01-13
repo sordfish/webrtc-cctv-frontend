@@ -36,6 +36,59 @@ const streams = {};
  * https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide.
  */
 let remoteVideoIsMuted = true;
+
+function createVideo(stream) {
+    // Create a video element for rendering the stream
+    const remoteVideo = document.createElement("video");
+    remoteVideo.srcObject = stream;
+    remoteVideo.autoplay = true;
+    remoteVideo.controls = true;
+    remoteVideo.muted = remoteVideoIsMuted;
+    remotesDiv.appendChild(remoteVideo);
+
+    // Save the stream and video element in the map.
+    streams[stream.id] = { stream, videoElement: remoteVideo };
+
+    // When this stream removes a track, assume
+    // that its going away and remove it.
+    stream.onremovetrack = () => {
+      try {
+        if (streams[stream.id]) {
+          const { videoElement } = streams[stream.id];
+          remotesDiv.removeChild(videoElement);
+          delete streams[stream.id];
+        }
+      } catch (err) {}
+    };
+}
+
+function createAudio(stream) {
+    // Create a video element for rendering the stream
+    const remoteAudio = document.createElement("audio");
+    remoteAudio.srcObject = stream;
+    remoteAudio.autoplay = true;
+    remoteAudio.controls = true;
+    remoteAudio.muted = remoteVideoIsMuted;
+    remotesDiv.appendChild(remoteAudio);
+
+    // Save the stream and video element in the map.
+    streams[stream.id] = { stream, videoElement: remoteAudio };
+
+    // When this stream removes a track, assume
+    // that its going away and remove it.
+    stream.onremovetrack = () => {
+      console.log("streams", streams)
+      try {
+        if (streams[stream.id]) {
+          const { videoElement } = streams[stream.id];
+          remotesDiv.removeChild(videoElement);
+          delete streams[stream.id];
+        }
+      } catch (err) {}
+      console.log("removed stream: ", streams[stream.id])
+    };
+}
+
 function enableAudio() {
   if (remoteVideoIsMuted) {
     // Unmute all the current videoElements.
@@ -59,29 +112,18 @@ clientLocal.ontrack = (track, stream) => {
   track.onunmute = () => {
     // If the stream is not there in the streams map.
     if (!streams[stream.id]) {
-      // Create a video element for rendering the stream
-      const remoteVideo = document.createElement("video");
-      remoteVideo.srcObject = stream;
-      remoteVideo.autoplay = true;
-      remoteVideo.controls = true;
-      remoteVideo.muted = remoteVideoIsMuted;
-      remotesDiv.appendChild(remoteVideo);
 
-      // Save the stream and video element in the map.
-      streams[stream.id] = { stream, videoElement: remoteVideo };
-
-      // When this stream removes a track, assume
-      // that its going away and remove it.
-      stream.onremovetrack = () => {
-        try {
-          if (streams[stream.id]) {
-            const { videoElement } = streams[stream.id];
-            remotesDiv.removeChild(videoElement);
-            delete streams[stream.id];
-          }
-        } catch (err) {}
+      switch (track.id) {
+        case "video":
+          createVideo(stream)
+          break;
+        case "audio"
+          createAudio(stream)  
+        default:
+          createVideo(stream)
+          break
       };
-    }
+    };
   };
 };
 
