@@ -9,7 +9,13 @@ const serverUrl = "wss://" + window.location.host + "/ws";
 const joinBtns = document.getElementById("start-btns");
 
 const config = {
-  iceServers: [],
+  iceServers: [
+    // {
+    //   urls: "turn:ion-sfu-turn.cctv.svc.cluster.local:3478",
+    //   username:   "pion",
+    //   credential: "ion",      
+    // },
+  ],
 };
 
 const signalLocal = new Signal.IonSFUJSONRPCSignal(serverUrl);
