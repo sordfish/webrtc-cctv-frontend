@@ -3,8 +3,7 @@ const remotesDiv = document.getElementById("remotes");
 
 const params = new URLSearchParams(window.location.search)
 
-const serverUrl = "wss://web.charliecharlietangovictor.icu/ws";
-//const serverUrl = "wss://" + window.location.host + "/ws";
+const serverUrl = "wss://" + window.location.host + "/ws";
 
 /* eslint-env browser */
 const joinBtns = document.getElementById("start-btns");
