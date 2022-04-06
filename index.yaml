@@ -3,6 +3,16 @@ entries:
   webrtc-cctv-frontend:
   - apiVersion: v2
     appVersion: 1.21.5
+    created: "2022-04-06T09:55:17.43542463Z"
+    description: A Helm chart for nginx and frontend html
+    digest: eb0546c44c06470757f71f212533072d3d66326baea3e99b5bb132be51f379c8
+    name: webrtc-cctv-frontend
+    type: application
+    urls:
+    - https://github.com/sordfish/webrtc-cctv-frontend/releases/download/webrtc-cctv-frontend-0.1.6/webrtc-cctv-frontend-0.1.6.tgz
+    version: 0.1.6
+  - apiVersion: v2
+    appVersion: 1.21.5
     created: "2022-04-02T12:21:14.501741804Z"
     description: A Helm chart for nginx and frontend html
     digest: 248c61dab3c6041591c7547cae6cedde753addecd76114eb6a32d78a2173f85b
@@ -141,4 +151,4 @@ entries:
     urls:
     - https://github.com/sordfish/webrtc-cctv-frontend/releases/download/webrtc-cctv-frontend-0.0.6/webrtc-cctv-frontend-0.0.6.tgz
     version: 0.0.6
-generated: "2022-04-02T12:21:14.502112008Z"
+generated: "2022-04-06T09:55:17.435571532Z"
