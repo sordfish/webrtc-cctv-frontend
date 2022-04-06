@@ -38,6 +38,7 @@ data:
         }        
 
         location /v1 {
+          proxy_pass     http://{{ .Values.config.fabio.service }}.{{ .Release.Namespace }}.svc.cluster.local:9999;
           proxy_redirect http://{{ .Values.config.fabio.service }}.{{ .Release.Namespace }}.svc.cluster.local:9999/ /;
         }   
 
