@@ -40,7 +40,14 @@ data:
         location /v1 {
           proxy_http_version 1.1;
           proxy_pass http://{{ .Values.config.fabio.service }}.{{ .Release.Namespace }}.svc.cluster.local:9999;
-          proxy_redirect http://{{ .Values.config.fabio.service }}.{{ .Release.Namespace }}.svc.cluster.local:9999/ /;
+          proxy_redirect / /v1;
+        }
+
+        location /v2 {
+          proxy_http_version 1.1;
+          proxy_pass http://whoami-service.service.{{ .Release.Namespace }}.svc.cluster.local:8080;
+          proxy_redirect / /v2;
         }   
+
 
     }
