@@ -37,10 +37,8 @@ data:
           proxy_pass http://{{ .Values.config.websocket.url }}.{{ .Release.Namespace }}.svc.cluster.local:7000;
         }        
 
-        location /v1/ {
-          proxy_http_version 1.1;
-          proxy_set_header Host $host;
-          proxy_pass http://{{ .Values.config.consul.service }}.{{ .Release.Namespace }}.svc.cluster.local:8500;
+        location /v1 {
+          proxy_redirect http://{{ .Values.config.fabio.service }}.{{ .Release.Namespace }}.svc.cluster.local:9999/ /;
         }   
 
     }

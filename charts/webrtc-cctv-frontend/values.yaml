@@ -11,7 +11,7 @@ config:
     url: "ion-sfu"  
   js:
     url: https://raw.githubusercontent.com/sordfish/webrtc-cctv-frontend/main/main.js
-  consul:
+  fabio:
     service: ""
 
 replicaCount: 1
