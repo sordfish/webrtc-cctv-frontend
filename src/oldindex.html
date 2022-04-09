@@ -5,18 +5,13 @@
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
 
   <style>
     
-    #remotes video {
-        width: 50%;
-      }
-
     @media (max-width : 1000px) {
       #remotes video {
         width: 100%;
@@ -41,10 +36,7 @@
 <body>
   <div class="container-xl" style="padding: 0;">
     <div class="row">
-      <div id="remotes" class="col"></div>
-    </div>
-    <div class="row">
-      <div id="recordings" class="col"></div>
+      <div id="remotes" class="col">
     </div>
     </div>
   </div>
@@ -59,11 +51,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/ion-sdk-js@1.8.1/dist/ion-sdk.min.js"></script>
-  <script src="https://unpkg.com/ion-sdk-js@1.8.1/dist/json-rpc.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-  <script>eruda.init();</script>
-  <script src="/src/js/main2.js"></script>
+  <script src="https://unpkg.com/ion-sdk-js@1.5.5/dist/ion-sdk.min.js"></script>
+  <script src="https://unpkg.com/ion-sdk-js@1.5.5/dist/json-rpc.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
