@@ -12,7 +12,7 @@ config:
   js:
     url: https://raw.githubusercontent.com/sordfish/webrtc-cctv-frontend/main/main.js
   fabio:
-    service: ""
+    service: "fabio-http-service"
 
 replicaCount: 1
 
@@ -20,7 +20,7 @@ image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.21.6-alpine"
+  tag: "1.23.1-alpine"
   tls:
     secret: "web-tls-secret"
     
@@ -64,7 +64,9 @@ ingress:
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: chart-example.local
-      paths: []
+      # paths: []
+      paths:                                                                                                                                                                                                                                
+      - path: /       
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
