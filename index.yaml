@@ -11,6 +11,16 @@ entries:
     urls:
     - https://github.com/sordfish/webrtc-cctv-frontend/releases/download/elf-0.1.16/elf-0.1.16.tgz
     version: 0.1.16
+  - apiVersion: v2
+    appVersion: 1.23.1
+    created: "2022-12-17T19:20:11.644520505Z"
+    description: A Helm chart for nginx and frontend html
+    digest: a7eeb313f2db8f643b8573f2f21dec26ba5156057f56a6c1e34f533d8849c583
+    name: elf
+    type: application
+    urls:
+    - https://github.com/sordfish/webrtc-cctv-frontend/releases/download/elf-0.1.15/elf-0.1.15.tgz
+    version: 0.1.15
   webrtc-cctv-frontend:
   - apiVersion: v2
     appVersion: 1.23.1
@@ -252,4 +262,4 @@ entries:
     urls:
     - https://github.com/sordfish/webrtc-cctv-frontend/releases/download/webrtc-cctv-frontend-0.0.6/webrtc-cctv-frontend-0.0.6.tgz
     version: 0.0.6
-generated: "2022-12-17T19:12:34.271184693Z"
+generated: "2022-12-17T19:20:11.644700511Z"
