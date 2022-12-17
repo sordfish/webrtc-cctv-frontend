@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "webrtc-cctv-frontend.fullname" . }}
+  name: {{ include "elf.fullname" . }}
   labels:
-    {{- include "webrtc-cctv-frontend.labels" . | nindent 4 }}
+    {{- include "elf.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "webrtc-cctv-frontend.selectorLabels" . | nindent 6 }}
+      {{- include "elf.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "webrtc-cctv-frontend.selectorLabels" . | nindent 8 }}
+        {{- include "elf.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -95,7 +95,7 @@ spec:
           emptyDir: {}              
         - name: config
           configMap:
-            name: {{ include "webrtc-cctv-frontend.fullname" . }}-configmap
+            name: {{ include "elf.fullname" . }}-configmap
             # An array of keys from the ConfigMap to create as files
             items:
             - key: "default.conf"

@@ -1,5 +1,5 @@
 apiVersion: v2
-name: webrtc-cctv-frontend
+name: elf
 description: A Helm chart for nginx and frontend html
 
 # A chart can be either an 'application' or a 'library' chart.
