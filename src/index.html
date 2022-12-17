@@ -12,22 +12,24 @@
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
 
   <style>
+
+    .recording {
+      margin-bottom: 10px;
+      border: 1px solid grey;
+    }
+
+
+    #recordings div img {
+      width: 33%;
+    }
     
     #remotes video {
-        width: 50%;
-      }
-
-    @media (max-width : 1000px) {
-      #remotes video {
         width: 100%;
-        border-radius: 25px;
-        border: 1px solid #FFFFFF00;
-        padding: 0.1rem;
-      }
-  
-      div#remotes {
-      }
+    }
 
+    div#remotes {
+      padding: 0;
+      margin: 0;
     }
 
     .row {
@@ -41,7 +43,19 @@
 <body>
   <div class="container-xl" style="padding: 0;">
     <div class="row">
-      <div id="remotes" class="col">
+      <div id="debug-nav" class="col">
+        <label for="serverurl">server url</label>
+        <input type="text" id="serverurl" name="serverurl" value="cctv.k8s.uk">
+        <br>
+        <label for="rtcsession">session</label>
+        <input type="text" id="rtcsession" name="rtcsession" value="cctv">
+      </div>
+    </div>
+    <div class="row">
+      <div id="remotes" class="col"></div>
+    </div>
+    <div class="row">
+      <div id="recordings" class="col"></div>
     </div>
     </div>
   </div>
@@ -60,7 +74,7 @@
   <script src="https://unpkg.com/ion-sdk-js@1.8.1/dist/json-rpc.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/eruda"></script>
   <script>eruda.init();</script>
-  <script src="./main.js"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>

@@ -2,9 +2,9 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: {{ include "elf.fullname" . }}-selfsigned-crt
+  name: {{ include "webrtc-cctv-frontend.fullname" . }}-selfsigned-crt
 spec:
-  secretName: {{ include "elf.fullname" . }}-tls-secret
+  secretName: {{ include "webrtc-cctv-frontend.fullname" . }}-tls-secret
   duration: 170000h
   renewBefore: 72h
   issuerRef:

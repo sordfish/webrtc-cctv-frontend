@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "elf.fullname" . }}
+  name: {{ include "webrtc-cctv-frontend.fullname" . }}
   labels:
-    {{- include "elf.labels" . | nindent 4 }}
+    {{- include "webrtc-cctv-frontend.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -16,4 +16,4 @@ spec:
       protocol: TCP
       name: https  
   selector:
-    {{- include "elf.selectorLabels" . | nindent 4 }}
+    {{- include "webrtc-cctv-frontend.selectorLabels" . | nindent 4 }}
