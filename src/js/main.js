@@ -102,7 +102,7 @@ function createAudio(stream) {
 
 
 function getRecordings(stream){
-  fetch('https://'+ bareUrl + '/v1/' + stream.id + '/cam/api/videos')
+  fetch('https://'+ bareUrl + '/v1/' + stream.id + '/cam/api/videos?limit=20')
   .then(res => res.json())
   .then(data => {
       data.sort();
